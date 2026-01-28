@@ -4,12 +4,14 @@ interface BadgeProps {
   children: ReactNode;
   variant?: 'primary' | 'accent' | 'success' | 'warning' | 'error';
   size?: 'sm' | 'md';
+  className?: string;
 }
 
 export const Badge = ({
   children,
   variant = 'primary',
   size = 'md',
+  className = '',
 }: BadgeProps) => {
   const variants = {
     primary: 'bg-primary/10 text-primary',
@@ -25,7 +27,7 @@ export const Badge = ({
   };
 
   return (
-    <span className={`inline-flex items-center font-medium rounded-full ${variants[variant]} ${sizes[size]}`}>
+    <span className={`inline-flex items-center font-bold rounded-full ${variants[variant]} ${sizes[size]} ${className}`}>
       {children}
     </span>
   );

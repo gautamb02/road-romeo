@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Bike, CheckCircle } from 'lucide-react';
+import { Bike, CheckCircle, Smartphone, ShieldCheck, MapPin } from 'lucide-react';
 import { Button, Select } from '@/components/common';
 import { siteConfig } from '@/config/site';
 import { bikeBrands, getModelsByBrand } from '@/data/bikes';
@@ -30,138 +30,141 @@ export const Hero = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Open WhatsApp with pre-filled message
     const message = `Hi! I want to book a bike service.\n\nBike: ${selectedBrand} ${selectedModel}\nService: ${selectedService}\nPhone: ${phone}`;
     const whatsappLink = `https://wa.me/${siteConfig.contact.whatsapp}?text=${encodeURIComponent(message)}`;
     window.open(whatsappLink, '_blank');
   };
 
   return (
-    <section className="relative bg-gradient-to-br from-primary/5 via-white to-accent/5 py-24 md:py-32 lg:py-48 overflow-hidden">
-      <div className="container">
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-          {/* Left Content */}
-          <div className="text-center lg:text-left">
-            <div className="inline-flex items-center gap-2 bg-accent/10 text-accent px-5 py-2.5 rounded-full mb-8">
-              <CheckCircle className="w-5 h-5" />
-              <span className="font-medium">Free Pickup & Drop in Pune</span>
-            </div>
+    <section className="relative min-h-[90vh] flex items-center bg-mesh py-24 lg:py-32 overflow-hidden">
+      {/* Decorative Blur Elements */}
+      <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px]" />
+      <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/4 w-[600px] h-[600px] bg-accent/5 rounded-full blur-[120px]" />
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-text-primary mb-8 leading-tight">
-              Best <span className="text-primary">Bike Service</span> in Pune
+      <div className="container relative z-10">
+        <div className="grid lg:grid-cols-2 gap-20 items-center">
+          {/* Left Content */}
+          <div className="text-center lg:text-left animate-fade-in">
+            <span className="badge-premium bg-primary text-white scale-105">
+              🚀 #1 Rated Service in Pune
+            </span>
+
+            <h1 className="section-heading mb-10">
+              The Smarter Way to <span className="text-primary italic">Service</span> Your Bike.
             </h1>
 
-            <p className="text-lg md:text-xl lg:text-2xl text-text-secondary mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed">
-              Professional two-wheeler servicing with{' '}
-              <span className="font-semibold text-accent">FREE pickup & drop</span>.
-              Trusted by {siteConfig.stats.customersServed} happy customers.
+            <p className="text-xl md:text-2xl text-slate-500 mb-12 max-w-2xl leading-relaxed">
+              Professional servicing with <span className="font-bold text-slate-900 underline decoration-primary/30 underline-offset-8">Zero-Cost Pickup & Drop</span>.
+              We bring the workshop to your doorstep.
             </p>
 
-            {/* Trust Indicators */}
-            <div className="flex flex-wrap justify-center lg:justify-start gap-8 mb-8">
-              <div className="flex items-center gap-4">
-                <div className="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center">
-                  <span className="text-2xl font-bold text-primary">{siteConfig.stats.rating}</span>
-                </div>
-                <div className="text-left">
-                  <p className="text-base font-semibold text-text-primary">Google Rating</p>
-                  <p className="text-sm text-text-secondary">{siteConfig.stats.reviewCount}+ reviews</p>
-                </div>
-              </div>
+            {/* Quick Stats Grid */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-8 mb-12">
+              <StatItem icon={Smartphone} label="Instant Booking" val="60s" />
+              <StatItem icon={ShieldCheck} label="Service Warranty" val="10 Days" />
+              <StatItem icon={MapPin} label="Across Pune" val="Free" />
+            </div>
 
-              <div className="flex items-center gap-4">
-                <div className="w-14 h-14 bg-accent/10 rounded-full flex items-center justify-center">
-                  <span className="text-2xl font-bold text-accent">{siteConfig.stats.warrantyDays}</span>
+            <div className="flex flex-wrap justify-center lg:justify-start gap-4">
+              <div className="flex -space-x-3 overflow-hidden p-2">
+                {[1, 2, 3, 4].map(i => (
+                  <img
+                    key={i}
+                    className="inline-block h-12 w-12 rounded-full ring-4 ring-white"
+                    src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${i + 10}`}
+                    alt="avatar"
+                  />
+                ))}
+              </div>
+              <div className="flex flex-col justify-center text-sm font-medium">
+                <div className="flex text-yellow-500">
+                  {[1, 2, 3, 4, 5].map(i => <span key={i}>★</span>)}
                 </div>
-                <div className="text-left">
-                  <p className="text-base font-semibold text-text-primary">Days Warranty</p>
-                  <p className="text-sm text-text-secondary">On all services</p>
-                </div>
+                <span className="text-slate-600 underline">Trusted by 5,000+ Pune Riders</span>
               </div>
             </div>
           </div>
 
           {/* Right - Booking Form */}
-          <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-10">
-            <div className="flex items-center gap-4 mb-8">
-              <div className="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center">
-                <Bike className="w-7 h-7 text-primary" />
+          <div className="card-premium lg:mt-0 mt-12 animate-fade-in [animation-delay:200ms]">
+            <div className="flex items-center gap-5 mb-10">
+              <div className="w-16 h-16 bg-slate-900 rounded-2xl flex items-center justify-center shadow-xl rotate-3">
+                <Bike className="w-8 h-8 text-white" />
               </div>
               <div>
-                <h2 className="text-2xl font-bold text-text-primary">Book Your Service</h2>
-                <p className="text-base text-text-secondary">Get instant quote on WhatsApp</p>
+                <h2 className="text-3xl font-black text-slate-900">Book Now</h2>
+                <p className="text-slate-500 font-medium">Instant Quote on WhatsApp</p>
               </div>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-5">
-              <div className="grid sm:grid-cols-2 gap-4">
-                <Select
-                  label="Bike Brand"
-                  options={brandOptions}
-                  placeholder="Select Brand"
-                  value={selectedBrand}
-                  onChange={(e) => {
-                    setSelectedBrand(e.target.value);
-                    setSelectedModel('');
-                  }}
-                  required
-                />
-                <Select
-                  label="Bike Model"
-                  options={modelOptions}
-                  placeholder="Select Model"
-                  value={selectedModel}
-                  onChange={(e) => setSelectedModel(e.target.value)}
-                  disabled={!selectedBrand}
-                  required
-                />
-              </div>
-
-              <Select
-                label="Service Type"
-                options={serviceOptions}
-                placeholder="Select Service"
-                value={selectedService}
-                onChange={(e) => setSelectedService(e.target.value)}
-                required
-              />
-
-              <div>
-                <label className="block text-sm font-medium text-text-primary mb-1">
-                  Phone Number
-                </label>
-                <div className="flex">
-                  <span className="inline-flex items-center px-4 bg-gray-100 border border-r-0 border-gray-300 rounded-l-lg text-text-secondary">
-                    +91
-                  </span>
-                  <input
-                    type="tel"
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
-                    placeholder="Enter your number"
-                    pattern="[0-9]{10}"
-                    maxLength={10}
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid sm:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <label className="text-sm font-bold text-slate-700 ml-1">Brand</label>
+                  <Select
+                    options={brandOptions}
+                    placeholder="Select Brand"
+                    value={selectedBrand}
+                    onChange={(e) => {
+                      setSelectedBrand(e.target.value);
+                      setSelectedModel('');
+                    }}
                     required
-                    className="flex-1 px-4 py-3 border border-gray-300 rounded-r-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-bold text-slate-700 ml-1">Model</label>
+                  <Select
+                    options={modelOptions}
+                    placeholder="Select Model"
+                    value={selectedModel}
+                    onChange={(e) => setSelectedModel(e.target.value)}
+                    disabled={!selectedBrand}
+                    required
                   />
                 </div>
               </div>
 
-              <div className="flex items-center gap-2 text-sm text-text-secondary">
-                <CheckCircle className="w-4 h-4 text-success" />
-                <span>Free Pickup & Drop included</span>
+              <div className="space-y-2">
+                <label className="text-sm font-bold text-slate-700 ml-1">Service Type</label>
+                <Select
+                  options={serviceOptions}
+                  placeholder="What does your bike need?"
+                  value={selectedService}
+                  onChange={(e) => setSelectedService(e.target.value)}
+                  required
+                />
               </div>
 
-              <Button type="submit" fullWidth size="lg">
-                Book Free Pickup Now
-              </Button>
+              <div className="space-y-2">
+                <label className="text-sm font-bold text-slate-700 ml-1">Mobile Number</label>
+                <div className="relative group">
+                  <div className="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none font-bold text-slate-400 group-focus-within:text-primary transition-colors">
+                    +91
+                  </div>
+                  <input
+                    type="tel"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    placeholder="888 888 8888"
+                    pattern="[0-9]{10}"
+                    maxLength={10}
+                    required
+                    className="input-premium pl-14"
+                  />
+                </div>
+              </div>
 
-              <p className="text-center text-sm text-text-secondary">
-                Or call us at{' '}
-                <a href={`tel:${siteConfig.contact.phone}`} className="font-semibold text-primary">
-                  {siteConfig.contact.phone}
-                </a>
-              </p>
+              <div className="flex items-center gap-3 p-4 bg-slate-50 rounded-2xl border border-slate-100">
+                <div className="w-8 h-8 bg-success/20 rounded-full flex items-center justify-center">
+                  <CheckCircle className="w-5 h-5 text-success" />
+                </div>
+                <span className="text-sm font-bold text-slate-700">Free Pickup & Drop included</span>
+              </div>
+
+              <Button type="submit" fullWidth className="btn-primary py-5 text-xl shadow-primary/20">
+                Get Free Pickup
+              </Button>
             </form>
           </div>
         </div>
@@ -169,3 +172,19 @@ export const Hero = () => {
     </section>
   );
 };
+
+const StatItem = ({ icon: Icon, label, val }: { icon: any, label: string, val: string }) => (
+  <div className="flex items-center gap-3">
+    <div className="p-3 bg-white shadow-md rounded-xl">
+      <Icon className="w-5 h-5 text-primary" />
+    </div>
+    <div className="flex flex-col">
+      <span className="text-xs font-bold text-slate-400 uppercase tracking-widest leading-none mb-1">
+        {label}
+      </span>
+      <span className="text-lg font-black text-slate-800 leading-none">
+        {val}
+      </span>
+    </div>
+  </div>
+);

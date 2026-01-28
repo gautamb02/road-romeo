@@ -1,73 +1,77 @@
-# React + TypeScript + Vite
+# Road Romeo - Premium Bike Service in Pune
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Road Romeo is a modern, high-conversion web platform for a professional two-wheeler servicing and repair business based in Pune, India. The website is built with a focus on premium aesthetics, exceptional user experience, and SEO optimization.
 
-Currently, two official plugins are available:
+## 🚀 Technical Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Framework:** React 19 + TypeScript
+- **Build Tool:** Vite 7
+- **Styling:** Tailwind CSS v4 (using `@tailwindcss/vite` plugin)
+- **Icons:** Lucide React
+- **Routing:** React Router 7
+- **Design System:** Custom "Mesh" Design System with Glassmorphism and specialized premium components.
 
-## React Compiler
+## ✨ Key Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Instant Booking Engine:** A streamlined service selection form that integrates directly with WhatsApp for immediate quotes and booking.
+- **Service Catalog:** Detailed grid showcasing various service packages with dynamic pricing and feature lists.
+- **Live Trust Indicators:** Real-time Google rating display, customer counters, and warranty badges.
+- **"Step-by-Step" Journey:** An interactive "How It Works" section guiding users from booking to home delivery.
+- **Mobile-First Experience:** Fully responsive design optimized for riders on the go.
+- **Floating CTA:** Persistent WhatsApp and Call buttons for high conversion.
+- **Glassmorphism Header:** A dynamic, scroll-reactive navigation bar with premium blur effects.
 
-## Expanding the ESLint configuration
+## 🛠️ Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Prerequisites
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Node.js (v18.0.0 or higher)
+- npm or yarn
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Installation
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+1. Clone the repository:
+   ```bash
+   git clone [repository-url]
+   cd road-romeo
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+### Development
+
+Run the development server:
+```bash
+npm run dev
+```
+Open [http://localhost:5173](http://localhost:5173) to view it in the browser.
+
+### Build
+
+Create an optimized production build:
+```bash
+npm run build
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+The output will be in the `dist/` directory.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🎨 Design System
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+The project uses a custom-built design system defined in `src/index.css`. It features:
+- **Default Theme:** Racing Red & Slate (Modern & Energetic)
+- **Secondary Theme:** Orange & Blue (available via `data-theme` attribute)
+- **Glassmorphism:** Built-in `.glass` and `.glass-dark` utilities.
+- **Premium Cards:** `.card-premium` utility for high-end component containers.
+
+## 📱 Contact & Support
+
+- **Phone:** +91 9730963184
+- **Address:** Kothrud, Pune, Maharashtra 411038
+- **Website:** [www.roadromeo.in](https://www.roadromeo.in)
+
+---
+
+Built with ❤️ for the Pune Riding Community.

@@ -1,0 +1,205 @@
+@import "tailwindcss";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* Theme Variables - Orange & Blue (Default) */
+[data-theme="orange-blue"] {
+  /* Primary Colors */
+  --color-primary: #1A56DB;
+  --color-primary-light: #3B82F6;
+  --color-primary-dark: #1E40AF;
+
+  /* Accent Colors */
+  --color-accent: #F97316;
+  --color-accent-light: #FB923C;
+  --color-accent-dark: #EA580C;
+
+  /* Backgrounds */
+  --color-bg-primary: #FFFFFF;
+  --color-bg-secondary: #F3F4F6;
+  --color-bg-dark: #1E3A5F;
+
+  /* Text */
+  --color-text-primary: #1F2937;
+  --color-text-secondary: #6B7280;
+  --color-text-light: #FFFFFF;
+
+  /* Semantic */
+  --color-success: #10B981;
+  --color-warning: #F59E0B;
+  --color-error: #EF4444;
+}
+
+/* Theme Variables - Red & Black */
+:root {
+  /* Primary Colors */
+  --color-primary: #DC2626;
+  --color-primary-light: #EF4444;
+  --color-primary-dark: #B91C1C;
+
+  /* Accent Colors */
+  --color-accent: #111827;
+  --color-accent-light: #374151;
+  --color-accent-dark: #030712;
+
+  /* Backgrounds */
+  --color-bg-primary: #FFFFFF;
+  --color-bg-secondary: #F9FAFB;
+  --color-bg-dark: #111827;
+
+  /* Text */
+  --color-text-primary: #111827;
+  --color-text-secondary: #4B5563;
+  --color-text-light: #FFFFFF;
+}
+
+/* Custom Theme Utilities */
+@theme {
+  --color-primary: var(--color-primary);
+  --color-primary-light: var(--color-primary-light);
+  --color-primary-dark: var(--color-primary-dark);
+  --color-accent: var(--color-accent);
+  --color-accent-light: var(--color-accent-light);
+  --color-accent-dark: var(--color-accent-dark);
+  --color-bg-primary: var(--color-bg-primary);
+  --color-bg-secondary: var(--color-bg-secondary);
+  --color-bg-dark: var(--color-bg-dark);
+  --color-text-primary: var(--color-text-primary);
+  --color-text-secondary: var(--color-text-secondary);
+  --color-text-light: var(--color-text-light);
+  --color-success: var(--color-success);
+  --color-warning: var(--color-warning);
+  --color-error: var(--color-error);
+}
+
+/* Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  line-height: 1.6;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Custom Component Classes */
+.btn-primary {
+  @apply bg-accent text-white font-semibold py-3 px-6 rounded-lg hover:bg-accent-dark transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 cursor-pointer;
+}
+
+.btn-secondary {
+  @apply bg-primary text-white font-semibold py-3 px-6 rounded-lg hover:bg-primary-dark transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 cursor-pointer;
+}
+
+.btn-outline {
+  @apply border-2 border-primary text-primary font-semibold py-3 px-6 rounded-lg hover:bg-primary hover:text-white transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 cursor-pointer;
+}
+
+.section-heading {
+  @apply text-4xl md:text-5xl lg:text-6xl font-extrabold text-text-primary text-center mb-8 tracking-tight;
+}
+
+.section-subheading {
+  @apply text-xl md:text-2xl text-text-secondary text-center max-w-4xl mx-auto mb-20 leading-relaxed;
+}
+
+.card {
+  @apply bg-white rounded-3xl shadow-lg p-10 hover:shadow-2xl transition-all duration-300 border border-gray-100;
+}
+
+/* Container - Updated for 80% width on desktop */
+.container {
+  @apply w-full mx-auto px-6 sm:px-10 lg:w-[80%] lg:max-w-[1600px] lg:px-0;
+}
+
+/* Section spacing utility - Increased for less clutter */
+.section-padding {
+  @apply py-24 md:py-36 lg:py-48;
+}
+
+.section-padding-sm {
+  @apply py-20 md:py-28 lg:py-36;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+@keyframes pulse-scale {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.animate-pulse-scale {
+  animation: pulse-scale 2s ease-in-out infinite;
+}
+
+/* Floating buttons container */
+.floating-buttons {
+  @apply fixed right-4 bottom-4 z-50 flex flex-col gap-3;
+}
+
+/* WhatsApp green */
+.whatsapp-btn {
+  @apply bg-[#25D366] text-white p-4 rounded-full shadow-lg hover:bg-[#128C7E] transition-all duration-200 hover:scale-110;
+}
+
+/* Call button */
+.call-btn {
+  @apply bg-primary text-white p-4 rounded-full shadow-lg hover:bg-primary-dark transition-all duration-200 hover:scale-110;
+}
+
+/* Input styles */
+.input-field {
+  @apply w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200;
+}
+
+.select-field {
+  @apply w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 bg-white appearance-none cursor-pointer;
+}
+
+/* Star rating */
+.star-filled {
+  @apply text-yellow-400 fill-yellow-400;
+}
+
+.star-empty {
+  @apply text-gray-300;
+}
